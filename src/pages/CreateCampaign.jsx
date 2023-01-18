@@ -2,7 +2,7 @@ import React from 'react'
 
 const CreateCampaign = () => {
   return (
-    <div>CreateCampaign</div>
+    <div>CreatejjCampaign</div>
   )
 }
 
