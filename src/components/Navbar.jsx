@@ -21,6 +21,30 @@ const Navbar = () => {
         </div>
       </div>
 
+      <div className='sm:flex hidden flex-row justify-end gap-4'>
+        <CustomButton
+          btnType='button'
+          title={address ? 'Create campaign' : 'Connect'}
+          styles={address ? 'bg-[#1dc071]' : 'bg-[#8c6dfd]'}
+          handleClick={() => {
+            if(address) navigate('create-campaign') 
+            else 'connect()'
+          }}
+        />
+
+        <Link to='/profile'>
+          <div className='w-[52px] h-[52px] rounded-full bg-[#2c2f32] flex justify-center items-center cursor-pointer'>
+            <img src={thirdweb} alt='user' classname='w-[70%] h-[50%] object-contain '/>
+          </div>
+        </Link>
+      </div>
+
+      <div className='sm:hidden flex justify-between items-center relative'>
+        <div className='w-[40px] h-[40px] rounded-[10px] bg-[#2c2f32] flex justify-center items-center cursor-pointer'>
+          <img src={thirdweb} alt='user' classname='w-[70%] h-[50%] object-contain '/>
+        </div>
+      </div>
+
 
     </div>
   )
