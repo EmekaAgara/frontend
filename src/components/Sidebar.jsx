@@ -5,7 +5,7 @@ import {logo, sun } from '../assets'
 import { navlinks } from '../constants'
 
 const Icon = ({styles,name,imgUrl,isActive,disable,handleClick}) => (
-  <div className={`w-[46px] h-[48px] rounded-[10px] ${isActive && isActive === name && 'bg-[#2c2f32]'} flex justify-center items-center ${!disable && 'cursor-pointer'} ${styles}`}onClick={handleClick}>
+  <div className={`w-[46px] h-[48px] rounded-[7px] ${isActive && isActive === name && 'bg-[#2c2f32]'} flex justify-center items-center ${!disable && 'cursor-pointer'} ${styles}`}onClick={handleClick}>
     {!isActive ? (
       <img src={imgUrl} alt="fund_logo" className="w-1/2 h-1/2"/>
     ) : (
@@ -26,7 +26,7 @@ const Sidebar = () => {
         <Icon styles="w-[52px] h-[52px] bg-[#2c2f32]" imgUrl={logo}/>
       </Link>
 
-      <div className='flex-1 flex flex-col justify-between items-center bg-[#1c1c24] rounded-[20px] w-[76px] py-4 mt-12'>
+      <div className='flex-1 flex flex-col justify-between items-center bg-[#1c1c24] rounded-[7px] w-[76px] py-4 mt-12'>
         <div className='flex flex-col justify-center items-center gap-3'>
           {navlinks.map((link) => (
             <Icon
