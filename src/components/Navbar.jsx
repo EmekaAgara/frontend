@@ -52,6 +52,30 @@ const Navbar = () => {
         />
 
         <div className={`absolute top-[60px] right-0 left-0 bg-[#1c1c24] z-10 shadow-secondary py-4 ${!toggleDrawer} ? '-translate-y-[100vh]' : 'translate-y-0]' transition-all duration-700` }>
+          <ul className='mb-4'>
+            {navlinks.map((link) => (
+              <li
+                key={link.name}
+                className={`flex p-4 ${isActive === link.name && 'bg-[#3a3a43]'}`}
+                onClick={() => {
+                  setIsActive(link.name);
+                  setToggleDrawer(false);
+                  navigate(link.link);
+                }}
+              >
+                <img 
+                  src={link.imgUrl}
+                  alt={link.name}
+                  className={`w-[24px] h-[24px] object-contain ${isActive === link.name ? 'grayscale-0' : 'grayscale'}`}
+                />
+                <p className={`ml-[20px] font-epilogue font-semibold text-[14px] ${isActive === link.name ? 'text-[#1dc071]' : 'text-[#808191]'}`}>
+                  {link.name}
+                </p>
+
+
+              </li>
+            ))}
+          </ul>
 
         </div>
 
