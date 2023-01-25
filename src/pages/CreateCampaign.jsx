@@ -59,7 +59,7 @@ const CreateCampaign = () => {
             placeholder="Tell us your story"
             isTextArea
             value={form.description}
-            handleChange={(e) => handleFormFieldChange ('descritpion', e)}
+            handleChange={(e) => handleFormFieldChange ('description', e)}
           />
         <div className='w-full flex justify-start items-center p-4 bg-[#8c6dfd] h-[120px] rounded-[10px]'>
           <img src={money} alt="money"className='w-[40px] h-[40px] object-contsin'/>
