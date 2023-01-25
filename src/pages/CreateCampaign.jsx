@@ -2,13 +2,16 @@ import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import {ethers} from 'ethers'
 
-import { money } from '../assets'
+import { createCampaign, money } from '../assets'
 import { CustomButton, FormField } from '../components'
 import { checkIfImage } from '../utils'
+import { useStateContext } from '../context'
+
 
 const CreateCampaign = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const {CreateCampaign} = useStateContext();
   const [form, setForm] = useState({
     name:'',
     title:'',
@@ -18,18 +21,29 @@ const CreateCampaign = () => {
     image:'',
   });
 
+  0xE00Da73a68e4ccd38B1D11b72d67397522859bfD
+
   const handleFormFieldChange = (fieldName, e) => {
     setForm({ ...form, [fieldName]: e.target.value})
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(form);
-
+    checkIfImage(form.image, async (exists) => {
+      if(exists) {
+        setIsLoading(true)
+        await createCampaign({ ...form, target:ethers.utils.parseUnits(form.target, 18)})
+        setIsLoading(false);
+        navigate('/');
+      } else {
+        alert ('Provide valid image URL')
+        setForm({ ...form, image:''});
+      }
+    })
   }
 
   return (
-    <div className='bg-[#1c1c24 flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4]'>
+    <div className='bg-[#1c1c24] flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4]'>
       {isLoading && 'Loader...'}
       <div className='flex justify-center items-centern p-[16px] sm:min-w-[380px] bg-[#3a3a43] rounded-[7px]'>
         <h1 className='font-epilogue font-bold sm:text-[25px] text-[18px] leading-[38px] text-white'>Start a Campaign</h1>

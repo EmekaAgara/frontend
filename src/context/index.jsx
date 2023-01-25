@@ -3,9 +3,9 @@ import React, { useContext, createContext } from "react";
 import {useAddress, useContract, useMetamask, useContractWrite } from "@thirdweb-dev/react"
 import { ethers } from "ethers";
 
-const stateContext = createContext();
+const StateContext = createContext();
 
-export const stateContextProvider = ({ children }) => {
+export const StateContextProvider = ({ children }) => {
     const { contract } = useContract ('0xE00Da73a68e4ccd38B1D11b72d67397522859bfD');
     const { mutateAsync: createCampaign } = useContractWrite(contract, 'createCampaign');
 
@@ -32,16 +32,17 @@ export const stateContextProvider = ({ children }) => {
     }
 
     return (
-        <stateContext.Provider
+        <StateContext.Provider
             value={{
                 address,
                 contract,
+                connect,
                 createCampaign: publishCampaign,
             }}
         >
             {children}
-        </stateContext.Provider>
+        </StateContext.Provider>
     )
 }
 
-export const useStateContext = () => useContext(stateContext);
+export const useStateContext = () => useContext(StateContext);
