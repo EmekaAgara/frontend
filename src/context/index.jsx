@@ -23,7 +23,7 @@ export const StateContextProvider = ({ children }) => {
                 form.image
             ])
 
-            console.log("contract call successful", date)
+            console.log("contract call successful", data)
         }   catch (error) {
             console.log("contract call failure", error)
         }
