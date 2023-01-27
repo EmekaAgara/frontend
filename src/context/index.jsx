@@ -19,8 +19,6 @@ export const StateContextProvider = ({ children }) => {
                 form.title,
                 form.description,
                 form.target,
-                form.description,
-                form.target,
                 new Date(form.deadline).getTime(),
                 form.image
             ])

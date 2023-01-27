@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import {ethers} from 'ethers'
 
-import { createCampaign, money } from '../assets'
+import { money } from '../assets'
 import { CustomButton, FormField } from '../components'
 import { checkIfImage } from '../utils'
 import { useStateContext } from '../context'
@@ -11,7 +11,7 @@ import { useStateContext } from '../context'
 const CreateCampaign = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  const {CreateCampaign} = useStateContext();
+  const {createCampaign} = useStateContext();
   const [form, setForm] = useState({
     name:'',
     title:'',
@@ -21,14 +21,13 @@ const CreateCampaign = () => {
     image:'',
   });
 
-  0xE00Da73a68e4ccd38B1D11b72d67397522859bfD
-
   const handleFormFieldChange = (fieldName, e) => {
     setForm({ ...form, [fieldName]: e.target.value})
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     checkIfImage(form.image, async (exists) => {
       if(exists) {
         setIsLoading(true)
